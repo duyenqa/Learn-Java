@@ -134,3 +134,23 @@ Actual result:
 ```
 The list is sorted: true
 ```
+**_Explain:_**
+- a.compareTo(b) > 0: a > b
+- a.compareTo(b) < 0: a < b
+- a.compareTo(b) = 0: a = b
+
+```
+["apple", "banana", "cherry", "orange"]
+```
+
+Compare a = apple, b = banana ==> a < b --> b = banana
+
+Compare a = banana, b = cherry ==> a < b --> b = cherry
+
+Compare a = cherry, b = orange ==> a < b --> b = orange
+
+```
+["banana", "apple", "orange", "cherry"]
+```
+
+Compare a = banana, b = apple ==> a > b --> "No sort"

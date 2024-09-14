@@ -113,6 +113,30 @@ Actual result:
 ```
 
 **d. Is the list sorted ?**
+- a.compareTo(b) > 0: a > b
+- a.compareTo(b) < 0: a < b
+- a.compareTo(b) = 0: a = b
+
+## Example 1: Check 2 number
+
+```java
+Integer number1 = 19;
+Integer number2 = 12;
+
+if (number1.compareTo(number2) < 0) {
+    System.out.println(number1 + " is less than " + number2);
+} else if (number1.compareTo(number2) > 0) {
+    System.out.println(number1 + " is greater than " + number2);
+} else {
+    System.out.println(number1 + " is equal " + number2);
+}
+```
+Actual result
+```
+19 is greater than 12
+```
+
+## Example 2: List string
 ```java
 List<String> words = Arrays.asList("apple", "banana", "cherry", "orange");
 boolean isSorted = words.stream()
@@ -135,10 +159,6 @@ Actual result:
 The list is sorted: true
 ```
 **_Explain:_**
-- a.compareTo(b) > 0: a > b
-- a.compareTo(b) < 0: a < b
-- a.compareTo(b) = 0: a = b
-
 ```
 ["apple", "banana", "cherry", "orange"]
 ```

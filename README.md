@@ -174,3 +174,6 @@ Compare a = cherry, b = orange ==> a < b --> b = orange
 ```
 
 Compare a = banana, b = apple ==> a > b --> "No sort"
+
+## Author
+By Ngô Thị Kim Duyên

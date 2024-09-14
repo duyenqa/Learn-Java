@@ -90,7 +90,7 @@ Actual result:
 [2, 4, 6, 8, 10, 12, 14, 16, 18]
 ```
 
-**d. Sort values in list**
+**d. Sort numbers in list**
 ```java
 List<Integer> numbers = Arrays.asList(36, 67, 56, 12, 99, 50, 97, 90, 13, 7);
 
@@ -99,8 +99,38 @@ List<Integer> sortedNumbers = numbers.stream()
         .collect(Collectors.toList());
 System.out.println(sortedNumbers);
 ```
+or other solution:
+
+```java
+List<Integer> numbers = Arrays.asList(36, 67, 56, 12, 99, 50, 97, 90, 13, 7);
+Collections.sort(numbers);
+System.out.println(numbers);
+```
 Actual result:
 
 ```
 [7, 12, 13, 36, 50, 56, 67, 90, 97, 99]
+```
+
+**d. Is the list sorted ?**
+```java
+List<String> words = Arrays.asList("apple", "banana", "cherry", "orange");
+boolean isSorted = words.stream()
+        .reduce((a, b) -> {
+            if (a.compareTo(b) > 0) {
+                throw new RuntimeException("No sort");
+            }
+            return b;
+        })
+        .isPresent();
+if (isSorted) {
+    System.out.println("The list is sorted: " + isSorted);
+}else {
+    System.out.println("The list is not sorted.");
+}
+```
+Actual result:
+
+```
+The list is sorted: true
 ```

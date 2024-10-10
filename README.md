@@ -175,5 +175,9 @@ Compare a = cherry, b = orange ==> a < b --> b = orange
 
 Compare a = banana, b = apple ==> a > b --> "No sort"
 
+## Overview OOP
+
+![Mind Map OOP](https://github.com/duyenqa/Learn-Java/blob/main/OOP_v1.png "my mind map")
+
 ## Author
 By Ngô Thị Kim Duyên

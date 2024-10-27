@@ -214,6 +214,84 @@ public boolean updateOneElement(int position, String text){
 }
 ```
 
+**h. Xóa tất cả các phần tử**
+
+```java
+//các số nguyên
+arrListInteger.clear();
+
+//chuỗi
+listStrings.clear();
+```
+
+**i. Sắp xếp các phần tử**
+  
+```java
+//các số nguyên tăng dần
+Collections.sort(arrListInteger, (s1, s2) -> s1.compareTo(s2));
+//hoặc:
+Collections.sort(arrListInteger);
+
+//các số nguyên giảm dần
+Collections.sort(arrListInteger, Comparator.reverseOrder());
+
+//các chuỗi tăng dần
+Collections.sort(listStrings, (s1, s2) -> s1.compareTo(s2));
+//hoặc:
+Collections.sort(listStrings);
+
+//Các chuỗi giảm dần
+Collections.sort(listStrings, Comparator.reverseOrder());
+```
+
+**i. Đảo ngược các phần tử**
+
+```java
+//các số nguyên
+Collections.reverse(arrListInteger);
+
+//chuỗi
+Collections.reverse(listStrings);
+```
+
+## Date
+**a. Lấy ngày giờ hiện tại**
+
+```java
+import java.util.Date;
+
+public class DateDemo {
+    public static void main(String[] args) {
+        Date date = new Date();
+        System.out.println(date);
+    }
+}
+```
+Actual result:
+```txt
+Sat Sep 14 19:20:53 ICT 2024
+```
+
+**b. Convert format date to dd/mm/yyyy hh:mm:ss**
+
+```java
+import java.util.Date;
+
+public class DateDemo {
+    public static void main(String[] args) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
+        Date date = new Date();
+
+        String formattedDate = dateFormat.format(date);
+        System.out.println("Formatted Date: " + formattedDate);
+    }
+}
+```
+Actual result:
+```txt
+Formatted Date: 14/09/2024 07:20:53
+```
+
 ## Overview OOP
 
 ![Mind Map OOP](https://github.com/duyenqa/Learn-Java/blob/main/OOP_v1.png "my mind map")

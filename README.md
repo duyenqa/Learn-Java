@@ -56,8 +56,31 @@ _**Kết quả:**_
 Before call the method: Kim Duyên
 After call the method: Meow meow
 ```
+**c. Biến tĩnh**
+- Có từ khóa static để đánh dấu biến thuộc về class, không phải object.
+- Tồn tại cho đến khi chương trình kết thúc
+- Tiết kiệm bộ nhớ
 
-**c. Boxing**
+```java
+class HelloWorld {
+    public static int staticVariable = 50;
+    public int instanceVariable = 0; 
+    
+    public static void main(String[] args) {
+        HelloWorld obj1 = new HelloWorld();
+        System.out.println(HelloWorld.staticVariable);
+        
+        obj1.instanceVariable = 10;
+        System.out.println(obj1.instanceVariable);
+    }
+}
+```
+_**Kết quả:**_
+```txt
+50
+10
+```
+**e. Boxing**
 - Chuyển đổi một kiểu nguyên thủy sang kiểu Wrapper
 ```java
 public class Boxing {

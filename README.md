@@ -147,7 +147,7 @@ List<Integer> listNumberInteger = Arrays.asList(15,2,34,40,51,65);
 //Numbers
 List<Integer> listNumberInteger = new ArrayList<>(Arrays.asList(15,2,34,40,51,65));
 ArrayList<Integer> arrListInteger = new ArrayList<>();
-ArrayList<String> arrListInteger = new ArrayList<>(3);
+ArrayList<String> arrListInteger1 = new ArrayList<>(3);
 
 ArrayList<Integer> listNumberInteger = new ArrayList<>(Arrays.asList(15,2,34,40,51,65));
 Vector<Integer> listNumberInteger = new Vector<>(Arrays.asList(1, 2, 3));

@@ -132,7 +132,87 @@ public class Unboxing {
     }
 }
 ```
+## Mảng 1 chiều
+- ArrayList là một lớp triển khai của List Interface trong Collections Framework nên nó sẽ có một vài đặc điểm và phương thức tương đồng với List
+- Sử dụng ArrayList khi ứng dụng cần truy xuất phần tử nhiều hơn cập nhật và xóa phần tử.
+- Sử dụng LinkedList khi ứng dụng cần cập nhật và xóa phần tử nhiều hơn là truy cập phần tử.
+  
+**a. Khai báo mảng**
+```java
+List<Integer> listNumberInteger = Arrays.asList(15,2,34,40,51,65);
+```
+==> Mảng cố định
 
+```java
+//Numbers
+List<Integer> listNumberInteger = new ArrayList<>(Arrays.asList(15,2,34,40,51,65));
+ArrayList<Integer> arrListInteger = new ArrayList<>();
+ArrayList<String> arrListInteger = new ArrayList<>(3);
+
+ArrayList<Integer> listNumberInteger = new ArrayList<>(Arrays.asList(15,2,34,40,51,65));
+Vector<Integer> listNumberInteger = new Vector<>(Arrays.asList(1, 2, 3));
+List<Integer> list1 = new LinkedList<>(Arrays.asList(11, 26, 38, 4, 57, 6));
+
+//Strings
+List<String> listStrings = new ArrayList<>(Arrays.asList("Java", "Python", "Android", "NodeJS", "Angular", "AI"));
+```
+==> Mảng động, tự động điều chỉnh kích thước mảng khi thêm, xóa phần tử
+
+**b. Thêm phần tử**
+- Khai báo 1 constructor hoặc tạo 1 hàm setter cũng được.
+  
+```java
+public HelloWorld(){
+    arrListInteger.add(40);
+    arrListInteger.add(10);
+    arrListInteger.add(92);
+    arrListInteger.add(56);
+    arrListInteger.add(38);
+    arrListInteger.add(16);
+}
+```
+**c. Lấy danh sách các phần tử**
+
+```java
+public List<Integer> getList() {
+    return arrListInteger;
+}
+```
+
+**d. Xóa 1 phần tử số nguyên**
+
+```java
+public boolean removeOneElement(int position){
+    arrListInteger.remove(position);
+    return true;
+}
+```
+
+**e. Xóa 1 phần tử chuỗi**
+
+```java
+public boolean removeOneElement(String skill){
+    return listStrings.remove(skill);
+}
+```
+
+**f. Cập nhật 1 phần tử số nguyên**
+
+```java
+public boolean updateOneElement(int position, int number){
+    arrListInteger.set(position, number);
+    return true;
+}
+```
+
+**g. Cập nhật 1 phần tử chuỗi**
+
+```java
+public boolean updateOneElement(int position, String text){
+    listStrings.set(position, text);
+    return true;
+}
+```
 
 ## Overview OOP
 

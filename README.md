@@ -133,6 +133,60 @@ public class Unboxing {
     }
 }
 ```
+
+## Sự khác biệt giữa String, StringBuilder và StringBuffer
+- String được gọi là immutable (không thể thay đổi được) 
+- Nó được lưu vào Pool
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String str = "Hello";
+        str.concat(", world!");
+        System.out.println(str); 
+    }
+}
+```
+Actual result:
+```text
+Hello
+```
+Có thể sửa để thay đổi được chuỗi ban đầu như sau:
+```java
+public class Main {
+    public static void main(String[] args) {
+        String str = "Hello";
+        str += ", world!";
+        System.out.println(str);
+    }
+}
+```
+Actual result:
+```text
+Hello, world!
+```
+
+- StringBuilder là mutable (có thể thay đổi giá trị) 
+- Khi khởi tạo thì giá trị sẽ được lưu vào heap
+- Ko an toàn cho xử lý đa luồng. Nhưng lại nhanh về mặt hiệu năng
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        StringBuilder sb = new StringBuilder("Hello");
+        sb.append(", world!");
+        System.out.println(sb.toString());
+    }
+}
+```
+Actual result:
+```text
+Hello, world!
+```
+- StringBuffer là mutable (có thể thay đổi giá trị) 
+- Khi khởi tạo thì giá trị sẽ được lưu vào heap
+- Xử lý luồng an toàn nhưng lại chậm về mặt hiệu năng
+  
 ## Mảng 1 chiều
 - ArrayList là một lớp triển khai của List Interface trong Collections Framework nên nó sẽ có một vài đặc điểm và phương thức tương đồng với List
 - Sử dụng ArrayList khi ứng dụng cần truy xuất phần tử nhiều hơn cập nhật và xóa phần tử.

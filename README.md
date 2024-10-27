@@ -58,7 +58,7 @@ After call the method: Meow meow
 ```
 **c. Biến tĩnh**
 - Tồn tại cho đến khi chương trình kết thúc
-- Có từ khóa static để đánh dấu biến thuộc về class, không phải object.
+- Có từ khóa static để đánh dấu biến thuộc về class
 - Cách dùng: không cần tạo instance, dùng tên class để truy cập
 - Mục đích: Tiết kiệm bộ nhớ
 

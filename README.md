@@ -254,6 +254,27 @@ Collections.reverse(arrListInteger);
 Collections.reverse(listStrings);
 ```
 
+**k. Tần xuất xuất hiện các phần tử**
+
+```java
+public class CountWord {
+    public static void main(String[] args){
+        List<String> strings = Arrays.asList("Java", "Python", "Android", "NodeJS", "Java", "Python");
+        for (int i = 0; i < strings.size(); i++) {
+            if (strings.indexOf(strings.get(i)) == i) {
+                int count = 0;
+                for (int j = 0; j < strings.size(); j++) {
+                    if (strings.get(i).equals(strings.get(j))) {
+                        count++;
+                    }
+                }
+                System.out.println(strings.get(i) + " repeat " + count);
+            }
+        }
+    }
+}
+```
+
 ## Date
 **a. Lấy ngày giờ hiện tại**
 

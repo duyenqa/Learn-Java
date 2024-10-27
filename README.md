@@ -1,179 +1,115 @@
 # Learn-Java
 
-## Date
-**a. Get the current date and time**
-```java
-Date date = new Date(); // Initialize Date object
-```
-## Example 1
-```java
-import java.util.Date;
+## Biến
+**a. Biến tham trị**
+- Thực hiện với dữ liệu nguyên thủy.
+- Khi bạn truyền một biến vào một phương thức, một bản sao của giá trị của biến đó sẽ được truyền vào phương thức, và bất kỳ thay đổi nào đối với biến trong phương thức sẽ không ảnh hưởng đến biến gốc bên ngoài phương thức.
 
-public class DateDemo {
+```java
+public class PassByValue {
+    public void changeValue(int x) {
+        x = 10;
+    }
+
     public static void main(String[] args) {
-        Date date = new Date();
-        System.out.println(date);
+        PassByValue pbv = new PassByValue();
+        int a = 5;
+        System.out.println("Trước khi gọi phương thức: " + a);
+        pbv.changeValue(a);
+        System.out.println("Sau khi gọi phương thức, giá trị của a: " + a);
     }
 }
 ```
-Actual result:
+_**Kết quả:**_
 ```txt
-Sat Sep 14 19:20:53 ICT 2024
+Trước khi gọi phương thức: 5
+Sau khi gọi phương thức, giá trị của a: 5
 ```
+**b. Biến tham chiếu**
+- Được thực hiện thông qua việc sử dụng các đối tượng. 
+- Khi bạn truyền một đối tượng vào một phương thức, bạn đang truyền một tham chiếu tới đối tượng đó, nghĩa là bất kỳ thay đổi nào đối với đối tượng trong phương thức cũng sẽ ảnh hưởng đến đối tượng gốc bên ngoài phương thức.
 
-**b. Convert format date to dd/mm/yyyy hh:mm:ss**
 ```java
-SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-```
-## Example 2
-```java
-import java.util.Date;
+class Job {
+    public String name;
+}
 
-public class DateDemo {
-    public static void main(String[] args) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy hh:mm:ss");
-        Date date = new Date();
+public class PassReferenceValue {
+    public void modifyJob(Job job) {
+        job.name = "Meow meow";
+    }
 
-        String formattedDate = dateFormat.format(date);
-        System.out.println("Formatted Date: " + formattedDate);
+    public static void main(String[] args){
+        PassReferenceValue passReferenceValue = new PassReferenceValue();
+        Job job = new Job();
+        job.name = "Kim Duyên";
+
+        System.out.println("Before call the method: " + job.name);
+        passReferenceValue.modifyJob(job);
+        System.out.println("After call the method: " + job.name);
     }
 }
 ```
-Actual result:
+
+_**Kết quả:**_
 ```txt
-Formatted Date: 14/09/2024 07:20:53
+Before call the method: Kim Duyên
+After call the method: Meow meow
 ```
 
-## Array
-
-**a. Filter numbers**
+**c. Boxing**
+- Chuyển đổi một kiểu nguyên thủy sang kiểu Wrapper
 ```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+public class Boxing {
+    public static void main(String[] args){
+        int num1 = 10;
+        Integer wrappedNum1 = num1; //or: Integer wrappedNum1 = Integer.valueOf(num1)
+        System.out.println(wrappedNum1);
 
-List<Integer> evenNumbers = numbers.stream()
-        .filter(n -> n % 2 == 0)
-        .collect(Collectors.toList());
-System.out.println(evenNumbers);
-```
-Actual result:
+        float num2 = 5.75f;
+        Float wrappedNum2 = num2;  //or: Float wrappedNum2 = Float.valueOf(num2);
+        System.out.println(wrappedNum2);
 
-```
-[2, 4, 6, 8]
-```
-
-**b. Total numbers in list**
-```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-int sum = numbers.stream()
-        .reduce(0, Integer::sum);
-System.out.println(sum);
-```
-Actual result:
-
-```
-45
-```
-
-**c. Update values in list**
-```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
-
-int updateList = numbers.stream()
-        .map(n -> n * 2)
-        .collect(Collectors.toList());
-System.out.println(updateList);
-```
-Actual result:
-
-```
-[2, 4, 6, 8, 10, 12, 14, 16, 18]
-```
-
-**d. Sort numbers in list**
-```java
-List<Integer> numbers = Arrays.asList(36, 67, 56, 12, 99, 50, 97, 90, 13, 7);
-
-List<Integer> sortedNumbers = numbers.stream()
-        .sorted()
-        .collect(Collectors.toList());
-System.out.println(sortedNumbers);
-```
-or other solution:
-
-```java
-List<Integer> numbers = Arrays.asList(36, 67, 56, 12, 99, 50, 97, 90, 13, 7);
-Collections.sort(numbers);
-System.out.println(numbers);
-```
-Actual result:
-
-```
-[7, 12, 13, 36, 50, 56, 67, 90, 97, 99]
-```
-
-**d. Is the list sorted ?**
-- a.compareTo(b) > 0: a > b
-- a.compareTo(b) < 0: a < b
-- a.compareTo(b) = 0: a = b
-
-## Example 1: Check 2 number
-
-```java
-Integer number1 = 19;
-Integer number2 = 12;
-
-if (number1.compareTo(number2) < 0) {
-    System.out.println(number1 + " is less than " + number2);
-} else if (number1.compareTo(number2) > 0) {
-    System.out.println(number1 + " is greater than " + number2);
-} else {
-    System.out.println(number1 + " is equal " + number2);
+        long num3 = 12345L;
+        Long wrappedNum3 = num3;  //or: Long wrappedNum = Long.valueOf(num);
+        System.out.println(wrappedNum3);
+    }
 }
 ```
-Actual result
-```
-19 is greater than 12
-```
 
-## Example 2: List string
+**d. Unboxing**
+- Chuyển từ một kiểu Wrapper sang kiểu nguyên thủy
+
 ```java
-List<String> words = Arrays.asList("apple", "banana", "cherry", "orange");
-boolean isSorted = words.stream()
-        .reduce((a, b) -> {
-            if (a.compareTo(b) > 0) {
-                throw new RuntimeException("No sort");
-            }
-            return b;
-        })
-        .isPresent();
-if (isSorted) {
-    System.out.println("The list is sorted: " + isSorted);
-}else {
-    System.out.println("The list is not sorted.");
+public class Unboxing {
+    public static void main(String[] args){
+        Integer wrapperInt = Integer.valueOf(10);
+        int primitiveInt = wrapperInt;
+        System.out.println("The value of primitiveInt is: " + primitiveInt);
+
+        Float wrapperFloat = Float.valueOf(5.75f);
+        float primitiveFloat = wrapperFloat;
+        System.out.println("The value of primitiveFloat is: " + primitiveFloat);
+
+        Long wrapperLong = Long.valueOf(1000L);
+        long primitiveLong = wrapperLong;
+        System.out.println("Long: " + primitiveLong);
+
+        Double wrapperDouble = Double.valueOf(3.14);
+        double primitiveDouble = wrapperDouble;  // unboxing
+        System.out.println("Double: " + primitiveDouble);
+
+        Byte wrapperByte = Byte.valueOf((byte) 10);
+        byte primitiveByte = wrapperByte;  // unboxing
+        System.out.println("Byte: " + primitiveByte);
+
+        Short wrapperShort = Short.valueOf((short) 5);
+        short primitiveShort = wrapperShort;  // unboxing
+        System.out.println("Short: " + primitiveShort);
+    }
 }
 ```
-Actual result:
 
-```
-The list is sorted: true
-```
-**_Explain:_**
-```
-["apple", "banana", "cherry", "orange"]
-```
-
-Compare a = apple, b = banana ==> a < b --> b = banana
-
-Compare a = banana, b = cherry ==> a < b --> b = cherry
-
-Compare a = cherry, b = orange ==> a < b --> b = orange
-
-```
-["banana", "apple", "orange", "cherry"]
-```
-
-Compare a = banana, b = apple ==> a > b --> "No sort"
 
 ## Overview OOP
 

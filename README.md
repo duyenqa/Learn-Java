@@ -57,9 +57,10 @@ Before call the method: Kim Duyên
 After call the method: Meow meow
 ```
 **c. Biến tĩnh**
-- Có từ khóa static để đánh dấu biến thuộc về class, không phải object.
 - Tồn tại cho đến khi chương trình kết thúc
-- Tiết kiệm bộ nhớ
+- Có từ khóa static để đánh dấu biến thuộc về class, không phải object.
+- Cách dùng: không cần tạo instance, dùng tên class để truy cập
+- Mục đích: Tiết kiệm bộ nhớ
 
 ```java
 class HelloWorld {
